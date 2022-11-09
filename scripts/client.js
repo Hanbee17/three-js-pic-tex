@@ -3,7 +3,7 @@
 // This is the basic script before modification
 
 // Extract globals from external script
-const { THREE } = window;
+import * as THREE from "../build/three.module.js";
 
 // Create a scene
 const scene = new THREE.Scene();
@@ -14,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 const renderer = new THREE.WebGLRenderer();
-renderer.setClearColor(0x000000);
+renderer.setClearColor(0xffffff);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(500, 500);
 document.body.appendChild(renderer.domElement);
@@ -22,12 +22,42 @@ document.body.appendChild(renderer.domElement);
 // Add a polygon to the scene
 const geometry = new THREE.IcosahedronGeometry(2, 1);
 const matLineBasic = new THREE.LineBasicMaterial( {
-  color: 0xaa42f5,
+  color: 0x6A8EAE,
   linewidth: 4
  } );
 const wireframe = new THREE.WireframeGeometry(geometry);
 const line = new THREE.LineSegments(wireframe, matLineBasic);
 scene.add(line);
+
+// First Image (red and purple glitch map)
+// Load image as texture
+//Image 1
+const texture2 = new THREE.TextureLoader().load( '../assets/t2.png' );
+// Immediately use the texture for material creation
+const material2 = new THREE.MeshBasicMaterial( { map: texture2, side: THREE.DoubleSide } );
+// Create plane geometry
+const geometry2 = new THREE.PlaneGeometry( 12, 8 );
+// Apply image texture to plane geometry
+const plane = new THREE.Mesh( geometry2, material2 );
+// Position plane geometry
+plane.position.set(0 , 0 , -1);
+plane.rotation.set(60 , 0 , 0);
+// Place plane geometry
+scene.add( plane );
+
+//Image2
+const texture3 = new THREE.TextureLoader().load( '../assets/t3.png' );
+// Immediately use the texture for material creation
+const material3 = new THREE.MeshBasicMaterial( { map: texture3, side: THREE.DoubleSide } );
+// Create plane geometry
+const geometry3 = new THREE.PlaneGeometry( 12, 8 );
+// Apply image texture to plane geometry
+const plane3 = new THREE.Mesh( geometry3, material3 );
+// Position plane geometry
+plane3.position.set(0 , 0 , -1);
+plane3.rotation.set(60 , 0 , 0);
+// Place plane geometry
+scene.add( plane3 );
 
 // Position our camera so we can see the shape
 camera.position.z = 10;
