@@ -167,18 +167,18 @@ scene.add(line);
 // First Image (red and purple glitch map)
 // Load image as texture
 //Image 1
-const texture2 = new THREE.TextureLoader().load( '../assets/t2.png' );
-// Immediately use the texture for material creation
-const material2 = new THREE.MeshBasicMaterial( { map: texture2, side: THREE.DoubleSide } );
-// Create plane geometry
-const geometry2 = new THREE.PlaneGeometry( 12, 8 );
-// Apply image texture to plane geometry
-const plane = new THREE.Mesh( geometry2, material2 );
-// Position plane geometry
-plane.position.set(3 , 10 , 1);
-plane.rotation.set(60 , 90 , 0);
-// Place plane geometry
-scene.add( plane );
+// const texture2 = new THREE.TextureLoader().load( '../assets/t2.png' );
+// // Immediately use the texture for material creation
+// const material2 = new THREE.MeshBasicMaterial( { map: texture2, side: THREE.DoubleSide } );
+// // Create plane geometry
+// const geometry2 = new THREE.PlaneGeometry( 12, 8 );
+// // Apply image texture to plane geometry
+// const plane = new THREE.Mesh( geometry2, material2 );
+// // Position plane geometry
+// plane.position.set(3 , 10 , 1);
+// plane.rotation.set(60 , 90 , 0);
+// // Place plane geometry
+// scene.add( plane );
 
 //Image2
 const texture3 = new THREE.TextureLoader().load( '../assets/t3.png' );
@@ -199,7 +199,7 @@ scene.add( plane3 );
 const loader3 = new FontLoader();
        loader3.load( '../assets/helvetiker_regular.typeface.json', function ( font ) {
          // Define font color
-         const color = 0x2E5999;
+         const color = 0xffffff;
          // Define font material
          const matDark = new THREE.LineBasicMaterial( {
            color: color,
@@ -213,7 +213,7 @@ const loader3 = new FontLoader();
          const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
          geometry.translate( xMid, 0, 0 );
          const text = new THREE.Mesh( geometry, matDark );
-         text.position.set(-4, 10 , 0);
+         text.position.set(0.5, 13 , 1);
          scene.add( text );
 
          // Generate and place right side text
